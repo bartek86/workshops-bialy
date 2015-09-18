@@ -1,14 +1,18 @@
-%h2 Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    = f.input :password, required: true
-    = f.input :password_confirmation, required: true
-    = f.input :firstname, required: true
-    = f.input :lastname, required: true
-  .form-actions
-    = f.button :submit, "Sign up"
-= render "devise/shared/links"
-%hr
-= link_to "Back", new_session_path(resource_name) , class: 'btn btn-primary'
+.col-md-6
+  %div.panel.panel-default
+    .panel-heading
+      %h2 Sign up
+    .panel-body  
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, required: true, autofocus: true
+          = f.input :password, required: true
+          = f.input :password_confirmation, required: true
+          = f.input :firstname, required: true
+          = f.input :lastname, required: true
+        .form-actions
+          = f.button :submit, "Sign up", class: 'btn btn-success'
+      
+      %hr
+      = link_to "Back", new_session_path(resource_name) , class: 'btn btn-primary'
