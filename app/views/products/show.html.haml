@@ -1,25 +1,56 @@
 %p#notice= notice
 %p#error= flash[:error]
+.col-md-11
+  %div.panel.panel-default
+    .panel-heading
+      %h3
+        Title:
+        %b= product.title
+    .panel-body.color-body
+      
+      .row
+        %div.col-md-4.well.well-sm
+          %p
+            %b Price:
+            = product.price
+        
+          %p
+            %b Category:
+            = link_to product.category.name, category_path(product.category.id)
+          %p
+            %b Average rating
+            %span.badge.badge-rating
+              %span.glyphicon.glyphicon-star  
+              = product.average_rating
+                
+        %div.col-md-8
+          %p
+            %b Description:
+          = product.description
+          
+      = link_to 'Back', category_path(category.id), class: 'btn btn-primary'
+      -if auth_user
+        = link_to 'Edit product', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
+    
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+.col-md-11
+  .row
+    .col-md-6
+      %div.panel.panel-default
+        .panel-heading
+          %h3 
+            Reviews
+            %span.badge.badge-count
+              = reviews.count
+        .panel-body
+          = render reviews
+    .col-md-1
+    .col-md-5
+      - if auth_user
+        %div.panel.panel-default
+          .panel-heading
+            %h3 Add review
+          .panel-body.color-body
+            = render 'reviews/form'
 
-%p
-  %b Category
-  = product.category.name
-
-%h3 Reviews
-= render 'reviews/form'
-
-= render reviews
-
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+  = link_to 'Back', category_path(category.id), class: 'btn btn-primary'
