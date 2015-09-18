@@ -13,5 +13,7 @@
     = f.input :firstname, required: true
     = f.input :lastname, required: true
   .form-actions
-    = f.button :submit, "Update"
+    = f.button :submit, "Update", class: 'btn btn-success'
 
+%hr/
+= link_to "Back", user_path(current_user.id), class: 'btn btn-primary'

@@ -1,7 +1,10 @@
-%h1 Editing category
-
-= render 'form'
-
-= link_to 'Show', category
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+.col-md-6
+  %div.panel.panel-default  
+    .panel-heading
+      %h1 Editing category
+    .panel-body.color-body
+      = render 'form'
+      
+      = link_to 'Category show', category, class: 'btn btn-primary'
+      
+      = link_to 'Back', categories_path, class: 'btn btn-primary'

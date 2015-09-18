@@ -5,8 +5,7 @@
   .panel-body
     -if user.reviews.any?
         
-          
-      - @reviews.each do |r|
+      - user.reviews.last(5).each do |r|
         %div.panel.panel-default
           %div.panel-body.color-body
             %p

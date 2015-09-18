@@ -1,17 +1,45 @@
 %p#notice= notice
+.row
+  .col-md-6
+    %div.panel.panel-default
+      .panel-heading
+        %h3
+          Category name:
+          %b
+            = category.name
+        Products number:    
+        %span.badge.badge-count
+          = category.products.count
+         
+      .panel-body.color-body
+    
+        %table.table
+          %thead
+            %tr
+              %th.first
 
-%p
-  %b Name:
-  = category.name
+                Product name
+              %th Average rating
+          %tbody
+            - category.products.each do |product|
+              %tr
+                %td.first
+                  = link_to product.title, category_product_path(product.category.id, product.id)
+                %td
+                  -if product.average_rating
+                    %span.badge.badge-rating
+                      %span.glyphicon.glyphicon-star
+                      = product.average_rating
+  .col-md-1
+  .col-md-4
+    %div.panel.panel-default
+      .panel-heading
+        %h3 New product
+      .panel-body.color-body
+        = render 'products/form'
+        
+- if administrator  
+  = link_to 'Edit', edit_category_path(category), class: 'btn btn-primary'
+  
 
-%p
-  - category.products.each do |product|
-    = product.title
-
-%p
-  %h3 New product
-  = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
 = link_to 'Back', categories_path, class: 'btn btn-primary'
