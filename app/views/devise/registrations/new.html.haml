@@ -5,6 +5,10 @@
     = f.input :email, required: true, autofocus: true
     = f.input :password, required: true
     = f.input :password_confirmation, required: true
+    = f.input :firstname, required: true
+    = f.input :lastname, required: true
   .form-actions
     = f.button :submit, "Sign up"
 = render "devise/shared/links"
+%hr
+= link_to "Back", new_session_path(resource_name) , class: 'btn btn-primary'
