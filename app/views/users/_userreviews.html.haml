@@ -1,0 +1,27 @@
+%div.panel.panel-default
+  .panel-heading
+    %h3
+      Recent reviews
+  .panel-body
+    -if user.reviews.any?
+        
+          
+      - @reviews.each do |r|
+        %div.panel.panel-default
+          %div.panel-body.color-body
+            %p
+              Product: 
+              = link_to r.product.title, category_product_path(r.product.category.id, r.product.id)
+            %p
+              = r.content
+          %div.panel-footer
+            %span.badge.badge-rating
+              %span.glyphicon.glyphicon-star
+              = r.rating
+            = r.created_at.strftime(" posted on %d/%m/%Y")
+                          
+                      
+            
+    - else 
+      %p
+        User have not posted any reviews yet

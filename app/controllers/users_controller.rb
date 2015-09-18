@@ -7,5 +7,6 @@ class UsersController < ApplicationController
     expose_decorated(:reviews, ancestor: :user )
     
   def show
+    @reviews = user.reviews.last(5)
   end
 end
