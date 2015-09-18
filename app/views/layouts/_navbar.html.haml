@@ -6,14 +6,17 @@
       -if user_signed_in?
         %li
           %span.navbar-brand.glyphicon.glyphicon-leaf
-          /%span.navbar-brand #{username}
+          %span.navbar-brand #{username}
       
       %li  
         =link_to root_path, class: 'btn btn-default' do
           %span.glyphicon.glyphicon-home
           %b Home
       -if user_signed_in?
-
+        %li   
+          =link_to current_user, class: 'btn btn-default' do
+            %span.glyphicon.glyphicon-user
+            %b User profile
         %li    
           =link_to destroy_user_session_path, method: :delete, class: 'btn btn-default' do
             %span.glyphicon.glyphicon-log-out

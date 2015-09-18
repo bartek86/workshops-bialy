@@ -1,6 +1,25 @@
-%h3
-  = user.person
-%p
-  = user.email
-  
-= render 'users/userreviews'
+%div
+  .row
+    %aside.col-md-5 
+      %div.well
+        %h3
+          = user.person
+        %p
+          = user.email
+        %br/
+        %p
+          Products added:
+          %span.badge.badge-count
+            =user.products.count
+        %p 
+          Reviews posted:
+          %span.badge.badge-count
+            =user.reviews.count
+            
+        -if current_user.id == user.id
+          = link_to 'Edit user', edit_user_registration_path, class: 'btn btn-success'
+      
+      = render 'users/userproducts'
+    .col-md-1     
+    %div.col-md-5      
+      = render 'users/userreviews'
