@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
-
+  
+  resources :users
+  
   root 'categories#index'
 end
