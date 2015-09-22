@@ -6,9 +6,8 @@
         %ul
           - review.errors.full_messages.each do |msg|
             %li= msg
-    .form-group
-      = f.label :content
-      = f.text_area :content, class: 'form-control'
-    .form-group
-      = f.input :rating, as: :radio_buttons, collection: 1..5
+    
+    = f.input :content, class: 'form-control'
+    = f.input :rating, as: :radio_buttons, collection: 1..5, class: 'radio-inline'
+    
     = f.submit 'Save', class: 'btn btn-success'
