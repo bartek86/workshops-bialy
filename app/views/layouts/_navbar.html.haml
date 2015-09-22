@@ -1,18 +1,19 @@
 %nav.navbar.navbar-default
   %div.container-fluid
     %div.navbar-header
-      %span.navbar-brand #{AppConfig.workshops_name}
+      %span.navbar-brand#logo 
+        #{AppConfig.workshops_name}
     %ul.nav.navbar-nav.navbar-right
       -if user_signed_in?
-        %li
+        %li        
           %span.navbar-brand.glyphicon.glyphicon-leaf
           %span.navbar-brand #{username}
       
-      %li  
-        =link_to root_path, class: 'btn btn-default' do
-          %span.glyphicon.glyphicon-home
-          %b Home
-      -if user_signed_in?
+        %li  
+          =link_to root_path, class: 'btn btn-default' do
+            %span.glyphicon.glyphicon-home
+            %b Home
+  
         %li   
           =link_to current_user, class: 'btn btn-default' do
             %span.glyphicon.glyphicon-user

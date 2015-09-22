@@ -19,12 +19,15 @@
               %th.first
 
                 Product name
+              %th Price  
               %th Average rating
           %tbody
             - category.products.each do |product|
               %tr
                 %td.first
                   = link_to product.title, category_product_path(product.category.id, product.id)
+                %td
+                  = product.price
                 %td
                   -if product.average_rating
                     %span.badge.badge-rating
