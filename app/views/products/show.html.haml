@@ -46,7 +46,7 @@
           = render reviews
     .col-md-1
     .col-md-5
-      - if auth_user
+      - if user_signed_in?
         %div.panel.panel-default
           .panel-heading
             %h3 Add review

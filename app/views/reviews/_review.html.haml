@@ -5,8 +5,11 @@
     %span.badge.badge-rating
       %span.glyphicon.glyphicon-star
       = review.rating
-    =link_to review.author, user_path(review.user.id)
+    - if review.user_id?
+      = link_to review.author, user_path(review.user.id)
+    - else
+      Account deleted
     %em= review.created_at.strftime("posted on %d/%m/%Y")
-    -if !current_user == nil? && (review.user.id == current_user.id || current_user.admin)
+    -if !current_user == nil? && (review.user_id == current_user.id || current_user.admin)
       =link_to 'Delete review', category_product_review_path(review.product.category, review.product, review),method: :delete, data: { confirm: 'Are you sure?' },
                 class: 'btn btn-danger btn-xs'
