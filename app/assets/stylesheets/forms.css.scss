@@ -1,0 +1,19 @@
+.review_rating {
+    $indent: 120px
+    label {
+        float: left;
+        width: $indent - 20px;
+        text-align: right;
+        margin: 2px 10px;
+        &.radio {
+            float: none;
+            margin: 0;
+            width: auto;
+            text-align: left;
+            margin-right: 10px;
+        }
+    }
+    input.radio_buttons{
+        margin-right: 5px;
+    }
+}

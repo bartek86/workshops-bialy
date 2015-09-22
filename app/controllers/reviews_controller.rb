@@ -3,9 +3,12 @@ class ReviewsController < ApplicationController
   expose(:review)
   expose(:product)
 
+  def new
+  end
+  
   def edit
   end
-
+  
   def create
     self.review = Review.new(review_params)
     review.user_id = current_user.id
@@ -14,7 +17,7 @@ class ReviewsController < ApplicationController
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
-      render action: 'new'
+      redirect_to category_product_url(product.category, product), notice: 'Review was incomplete'
     end
   end
 
