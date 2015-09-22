@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  
+  expose(:category)
   expose(:review)
   expose(:product)
 
@@ -17,7 +19,7 @@ class ReviewsController < ApplicationController
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
-      redirect_to category_product_url(product.category, product), notice: 'Review was incomplete'
+      render action: 'new'
     end
   end
 
