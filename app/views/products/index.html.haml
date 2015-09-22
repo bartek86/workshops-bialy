@@ -1,22 +1,24 @@
-%h1 Listing products
-
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Price
-    %th
-    %th
-    %th
-
-  - products.each do |product|
-    %tr
-      %td= product.title
-      %td= product.description
-      %td= product.price
-      %td= link_to 'Show', category_product_path(product.category, product)
-      -if auth_user
-        %td= link_to 'Edit', edit_category_product_path(product.category, product)
-        %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
+.col-md-6
+  %div.panel.panel-default
+    .panel-heading 
+      %h1 Listing products
+    .panel-body 
+      %table.table
+        %tr
+          %th.first Title
+          %th Price
+          %th
+          %th
+          %th
+      
+        - products.each do |product|
+          %tr
+            %td.first
+              = link_to "#{product.title}", category_product_path(product.category, product)
+            %td= product.price
+            -if auth_user
+              %td= link_to 'Edit', edit_category_product_path(product.category, product),class: 'btn btn-success btn-xs'
+              %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-danger btn-xs'
+      
+      %br

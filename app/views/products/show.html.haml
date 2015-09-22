@@ -31,7 +31,8 @@
       = link_to 'Back', category_path(category.id), class: 'btn btn-primary'
       -if auth_user
         = link_to 'Edit product', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
-    
+        = link_to 'Delete product', category_product_path(product.category, product),
+                  method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
 
 .col-md-11
   .row
